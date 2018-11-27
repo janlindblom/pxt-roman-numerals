@@ -4,36 +4,31 @@ namespace roman {
     //% blockId=roman_show_number
     //% block="show|number %num"
     export function showNumber(num: number, interval: number = 150): void {
-        let arabic: number = num
-        let thouLetters: string[] = ["", "M", "MM", "MMM"]
-        let hundLetters: string[] = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
-        let tensLetters: string[] = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
-        let onesLetters: string[] = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+        let arabic: number = num;
 
-        let result = ""
-        let numb: number = 0
-        numb = Math.idiv(arabic, 1000)
-        result += thouLetters[numb]
-        arabic %= 1000
+        // Converter source based on:
+        // http://csharphelper.com/blog/2016/04/convert-to-and-from-roman-numerals-in-c/
+        let thouLetters: string[] = ["", "M", "MM", "MMM"];
+        let hundLetters: string[] = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+        let tensLetters: string[] = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
+        let onesLetters: string[] = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
 
-        numb = Math.idiv(arabic, 100)
-        result += hundLetters[numb]
-        arabic %= 100
+        let result = "";
+        let numb: number = 0;
+        numb = Math.idiv(arabic, 1000);
+        result += thouLetters[numb];
+        arabic %= 1000;
 
-        numb = Math.idiv(arabic, 10)
-        result += tensLetters[numb]
-        arabic %= 10
+        numb = Math.idiv(arabic, 100);
+        result += hundLetters[numb];
+        arabic %= 100;
 
-        result += onesLetters[arabic]
+        numb = Math.idiv(arabic, 10);
+        result += tensLetters[numb];
+        arabic %= 10;
 
-        basic.showString(Math.roundWithPrecision(num, 2).toString(), interval)
+        result += onesLetters[arabic];
+
+        basic.showString(result, interval);
     }
 }
-
-basic.showLeds(`
-    . . . . .
-    . # . # .
-    . . . . .
-    # . . . #
-    . # # # .
-    `);
