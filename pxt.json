@@ -1,10 +1,13 @@
 {
     "name": "pxt-roman-numerals",
-    "version": "0.0.0",
-    "description": "",
+    "version": "0.0.1",
+    "description": "Display numbers as roman numerals.",
+    "license": "MIT",
+    "authors": [
+        "Jan Lindblom <jan.lindblom@kodarklubben.ax>"
+    ],
     "dependencies": {
-        "core": "*",
-        "radio": "*"
+        "core": "*"
     },
     "files": [
         "README.md",
@@ -13,5 +16,6 @@
     "testFiles": [
         "test.ts"
     ],
-    "public": false
+    "public": true,
+    "installedVersion": "workspace:d287fcda-8af4-4b3d-0853-5be2a138563e"
 }
